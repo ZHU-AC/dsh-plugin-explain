@@ -1,0 +1,144 @@
+{
+  "schemaVersion": 1,
+  "note": "作者撰写的中文释义。仅当包名精确命中时使用；未命中的包回退到其自带的 package.json / locale / README 中文。",
+  "plugins": {
+    "dsh-plugin-explain": {
+      "title": "插件说明（本插件）",
+      "summary": "按快捷键就能看到当前 profile 到底加载了哪些插件、每个插件一句人话的中文用途，以及它出现在界面的什么位置。",
+      "usage": "按 Ctrl+Alt+P（macOS 为 Cmd+Alt+P）打开浮层，或点左侧栏「插件说明」；顶部搜索框同时匹配中文名、包名和英文原文。",
+      "tags": ["说明", "插件清单"]
+    },
+    "@deepseek-ai/dsh-base": {
+      "title": "DSH 核心底座",
+      "summary": "DeepSeek Harness 的宿主核心：模型接入、会话、工具、文件与沙箱、技能、子智能体、插件加载器等全都由它提供。",
+      "usage": "不需要手动使用。没有它其他插件都无法运行，所以不要停用它。",
+      "tags": ["官方内置", "核心"]
+    },
+    "@deepseek-ai/dsh-web-app": {
+      "title": "Web 界面外壳",
+      "summary": "在核心之上叠加浏览器端界面：三栏布局、侧栏、会话页、设置页、快捷键服务和 Web 传输层。",
+      "usage": "不需要手动使用。它决定界面上有哪些区域，第三方插件基本都是往它预留的插槽里注入内容。",
+      "tags": ["官方内置", "界面"]
+    },
+    "@liustack/modlens": {
+      "title": "看图桥（modlens）",
+      "summary": "给不支持图片的文本模型接上一双眼睛：把截图、照片、图表交给 Antigravity CLI 读，再把识别到的文字和版面还原成结构化证据。",
+      "usage": "模型侧工具 modlens_read_image；你把图片路径或链接发出来，需要时它会自动调用。",
+      "tags": ["模型能力", "读图"]
+    },
+    "@zseven-w/dsh-android": {
+      "title": "安卓设备控制",
+      "summary": "把一台模拟器或 USB 真机放进对话里：截图、OCR 找字、点按、滑动、输入、读日志、装 APK 全部通过 adb 完成。",
+      "usage": "模型侧有一组 android_* 工具（android_devices / android_screenshot / android_tap_text …），说「看看我手机上的界面」即可触发。",
+      "tags": ["模型能力", "自动化"]
+    },
+    "answer-me-with-html": {
+      "title": "HTML 单页讲解",
+      "summary": "把一段解释做成能直接打开的一页 HTML：自带模板、SVG 排版和简明英语检查，比纯文字更适合讲清结构和流程。",
+      "usage": "技能 answer-me-with-html。问「为什么」「怎么运作」这类问题时，模型可能主动用它出图出页。",
+      "tags": ["技能", "可视化"]
+    },
+    "billion-context": {
+      "title": "上下文压缩",
+      "summary": "把长对话压缩成摘要，让几十万 token 的会话在更小的上下文窗口里继续跑，省钱并延长单会话寿命。",
+      "usage": "自动生效，无需手动操作；压缩策略与阈值在它的设置页里调，也可以直接问模型当前缓存命中情况。",
+      "tags": ["上下文", "省钱"]
+    },
+    "ds-harness-remote": {
+      "title": "远程访问",
+      "summary": "P2P 加密远程入口：用手机或另一台电脑连回这台机器上的 DSH、Codex、Claude Code 等工作区。",
+      "usage": "侧栏有远程面板，用它生成配对二维码；本机需要保持运行。",
+      "tags": ["远程", "多端"]
+    },
+    "dsh-at-file": {
+      "title": "@ 文件引用",
+      "summary": "在输入框里打 @ 就能搜索工作区文件，把路径作为引用塞进消息，而不是把文件内容整段注入。",
+      "usage": "在输入框输入 @ 后继续打字即可出现候选列表，回车选中。",
+      "tags": ["输入增强"]
+    },
+    "dsh-context": {
+      "title": "上下文透视",
+      "summary": "看清一段会话的上下文是由什么组成的、占了多少钱，并提供 /context 命令和一块上下文面板。",
+      "usage": "斜杠命令 /context，或侧栏的上下文面板；适合排查「为什么这么快就满了」。",
+      "tags": ["上下文", "诊断"]
+    },
+    "dsh-free-search": {
+      "title": "免费联网搜索",
+      "summary": "给模型装上 27 个搜索引擎：Bing、DuckDuckGo、Exa、Tavily 等免密钥引擎，加上需要配置的国内与模型内置搜索，并自动挑选可用引擎。",
+      "usage": "模型侧工具 web_search / multi_search / web_fetch / weather 等；设置里有「网页搜索」页可开关引擎与优先级。",
+      "tags": ["模型能力", "搜索"]
+    },
+    "dsh-genui": {
+      "title": "生成式界面（卡片）",
+      "summary": "让回答从一段文字变成一个能点的界面：图表、表格、表单、计算器、仪表盘都会以卡片形式直接在回复里渲染，表单提交还能回传给模型。",
+      "usage": "不需要手动调用。当问题适合用图表或表单表达时，回复里就会出现卡片；本卡片本身也是由它渲染的。",
+      "tags": ["界面", "卡片"]
+    },
+    "dsh-our-free-model": {
+      "title": "免费模型通道",
+      "summary": "免登录接入一批前沿模型（DeepSeek、Kimi、GLM 等）：内置账号池、积分领取、本地 OpenAI 网关与局域网转发，六个页面统一管理。",
+      "usage": "在模型选择器里挑它提供的模型；额度与账号在它的管理页里看，桌面端还接入了 EAC 协付渠道。",
+      "tags": ["模型", "账号"]
+    },
+    "dsh-pet": {
+      "title": "桌面宠物",
+      "summary": "一只住在界面上的蓝色大肥鱼：会溜达、被拖着走、聊天时冒话，还能顺手显示余额。",
+      "usage": "出现在界面上，可以直接拖动；它的设置页能换角色、皮肤、音效和说话频率。",
+      "tags": ["装饰", "趣味"]
+    },
+    "dsh-token-diet": {
+      "title": "用量与预算",
+      "summary": "汇总所有会话、子智能体和自动化任务的 token 用量与花费，并能在预算耗尽时自动把任务停下来。",
+      "usage": "侧栏有统计页；输入框旁可以给当前会话设预算，超限会弹出提示让你继续或停止。",
+      "tags": ["用量", "省钱"]
+    },
+    "dsh-univer-office": {
+      "title": "表格文档演示",
+      "summary": "把 Univer 的电子表格、Word 文档、PPT、数据库和画布接进对话：能预览、能在浮动窗口里改，也能导出成 xlsx / docx / pptx。",
+      "usage": "模型侧是一组 univer_* 工具（univer_new / univer_inspect / univer_screenshot / univer_export …），说要表格或 PPT 时会自动用。",
+      "tags": ["模型能力", "办公"]
+    },
+    "dsh-video-storyboard": {
+      "title": "视频分镜",
+      "summary": "把一段视频变成可引用的分镜图加带时间码的台词清单，模型据此回答「第几分钟发生了什么」。",
+      "usage": "模型侧工具 video_probe / video_storyboard / video_zoom / video_locate / video_subtitles；把视频路径或链接发出来即可。",
+      "tags": ["模型能力", "视频"]
+    },
+    "dsh-whale-widget": {
+      "title": "余额小鲸鱼",
+      "summary": "界面右下角的余额挂件：显示余额、今日已用、峰谷定价，点击还能冒泡、换皮肤、放音效。",
+      "usage": "默认在右下角，可拖动；点它看详情，长按或悬停进入快捷编辑。",
+      "tags": ["装饰", "账户"]
+    },
+    "dshmarket": {
+      "title": "插件市场",
+      "summary": "在 DSH 里逛插件：搜索、看说明、一键安装社区插件，装完不用离开界面。",
+      "usage": "侧栏的插件页里有一个「发现」标签，或者直接用市场面板搜索包名。",
+      "tags": ["插件管理", "市场"]
+    },
+    "dsh-connect-workbuddy": {
+      "title": "WorkBuddy 模型接入",
+      "summary": "把本机登录的 WorkBuddy（国内版与国际版）模型接进 DSH：自动读取每个模型的积分倍率，支持图片开关、多账号切换与账号池换号，还带每日签到。",
+      "usage": "在模型选择器里会出现 WorkBuddy 的模型；账号、积分和签到在它的设置页里管理。",
+      "tags": ["模型", "账号"]
+    },
+    "@aeroscis/dsh-workspace-manager": {
+      "title": "工作区管理",
+      "summary": "整理侧栏的工作区：活动项目自动上浮、置顶、一键排序、清理空工作区，还能把工作区连同文件夹和对话一起搬到新路径。",
+      "usage": "点侧栏「工作区」标题右侧的图标按钮打开面板。",
+      "tags": ["界面", "整理"]
+    },
+    "deepseek-idesign": {
+      "title": "设计工作室",
+      "summary": "iPolloWork 的设计工作台与成套设计模板，以原生对话视图的形式出现在 DSH 里。",
+      "usage": "在侧栏或面板里打开设计工作室，选模板后描述你要做的东西。",
+      "tags": ["设计", "创作"]
+    },
+    "dsh-mole": {
+      "title": "磁盘清理（Mole）",
+      "summary": "用自然语言清理磁盘：找出占空间的大文件、清缓存、卸载应用和残留，只看不删还是真的删由你确认。",
+      "usage": "技能 mole。直接说「磁盘满了」「帮我清理」就会加载它，命令前缀是 mo。",
+      "tags": ["技能", "系统"]
+    }
+  }
+}

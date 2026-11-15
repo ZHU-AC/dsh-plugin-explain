@@ -1,0 +1,9 @@
+# dsh-plugin-explain — see what each installed plugin actually does.
+# The row is inert: every field is optional and the plugin reads its own data.
+- insert:
+    - id: plugin-explain
+      name: dsh-plugin-explain
+      config:
+        lang: zh
+        includeOfficial: false
+        shortcut: true

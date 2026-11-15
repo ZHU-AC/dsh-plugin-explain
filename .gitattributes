@@ -1,0 +1,19 @@
+# Normalise line endings: keep LF in the repository for every platform.
+* text=auto eol=lf
+
+# Windows-only scripts keep their native endings.
+*.cmd text eol=crlf
+*.bat text eol=crlf
+
+# Binary assets are never touched.
+*.png binary
+*.jpg binary
+*.webp binary
+*.ico binary
+*.tgz binary
+
+# Keep the diffs of these readable.
+*.md text
+*.json text
+*.yml text
+*.js text
